@@ -30,9 +30,9 @@ is entered for the first time. -->
   
  <!-- Time for the Door shit -->
   <asset name='doorKey' type='graphic'>objects/items/item7.png</asset>
-  <asset name='doorClosed' type='graphic'>object/objects/doorClosed.png</asset>
-  <asset name='doorOpen'   type='graphic'>object/objects/doorOpen.png</asset>
-  <asset name='doorWalkable' type='path'>47,735;252,735;47,438;252,438</asset>
+  <asset name='doorClosed' type='graphic'>objects/objects/doorClosed.png</asset>
+  <asset name='doorOpen'   type='graphic'>objects/objects/doorOpen.png</asset>
+  <asset name='doorWalkable' type='path'>47,438;252,438;252,735;47,735</asset>
 </assets>
 
 <!-- We create the sprite for this item outside of everything else
@@ -306,8 +306,8 @@ safe than sorry.-->
 			</action>
 		</sprite>
 		
-  	<sprite class='chest1' name='chest7' x='794' y='762'>
-			<action command='openChest' sprite='bux' name='Open.'>
+  	<sprite class='chest1' name='chest7' x='1101' y='1146'>
+			<action command='openChest' sprite='hiWiz' name='Open.'>
 				<args>
 					chest7, doorKey, @! You got a WIZARD KEY
 					@! You can use this to open random, magical doors.
@@ -321,16 +321,21 @@ safe than sorry.-->
                                             <action command='playSound' noDelay='true'>
                                                 <args>openSound</args>
                                             </action>
-                                        </action>
                                     </action>
-                            </action>
+                                </action>
                         </args>
                 </action>
+			</action>
+			<action command='openChest' sprite='bux' name='Open.'>
+				<args>
+					@! You can't seem to open this CHEST.
+					@! It has someone's initials on the bottom of the lock, so you assume that they put a spell on it so nobody can open it up.
+				</args>
 			</action>
 		</sprite>
 		
 	<!-- Copying Code from Openbound because I'm a lazy fuck -->
-	<sprite name='door' x='150' y='735' width='100' height='60'>
+	<sprite name='door' x='150' y='735' width='100' height='60' depthing='3'>
                   <animation name='closed' sheet='doorClosed' x='-60' y='-144'/>
                   <animation name='open' sheet='doorOpen' x='-60' y='-144'/>
           </sprite>
@@ -349,8 +354,8 @@ safe than sorry.-->
     </sprite>
 	<!-- Triggers -->
 	<triggers>
-        <trigger>spriteProperty,char,x&gt;1237
-            <trigger detonate="true">spriteProperty,char,y&lt;347
+        <trigger>spriteProperty,bux,x&gt;1237
+            <trigger detonate="true">spriteProperty,bux,y&lt;347
 				<action command='talk'>
 					 <args>
 					 @! This leads to the end of the game. Are you sure you're done here?
@@ -378,11 +383,17 @@ safe than sorry.-->
 						<action command='playSound' noDelay='true'>
 							<args>closeSound</args>                                
 								<action command='addWalkable'>
-									<args>doorWalkable,firstRoom</args>
+									<args>doorWalkable,thirdRoom</args>
 								</action>
 						</action>
 				</action>
 		</trigger>
+		
+		<trigger>spriteProperty,char,x&lt;500
+            <trigger>spriteProperty,char,y&lt;15
+					<action command='changeRoomRemote'>rooms/secondRoom.xml,secondRoom,655,2640</action>
+            </trigger>
+        </trigger>
 	</triggers>
   </room>
 </rooms>
