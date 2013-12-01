@@ -27,6 +27,12 @@ is entered for the first time. -->
   <asset name='item4' type='graphic'>objects/items/item4.png</asset>
   <asset name='item5' type='graphic'>objects/items/item5.png</asset>
   <asset name='item6' type='graphic'>objects/items/item6.png</asset>
+  
+ <!-- Time for the Door shit -->
+  <asset name='doorKey' type='graphic'>objects/items/item7.png</asset>
+  <asset name='doorClosed' type='graphic'>object/objects/doorClosed.png</asset>
+  <asset name='doorOpen'   type='graphic'>object/objects/doorOpen.png</asset>
+  <asset name='doorWalkable' type='path'>47,735;252,735;47,438;252,438</asset>
 </assets>
 
 <!-- We create the sprite for this item outside of everything else
@@ -59,6 +65,9 @@ Note: depthing='2' puts this in front of everything, including foreground elemen
 	<animation sheet='item6' x='-30' y='-30'/>
 </sprite>
 
+<sprite name='doorKey' depthing='3'>
+	<animation sheet='doorKey' x='-30' y='-30'/>
+</sprite>
 
 <!-- We wrap all room tags in the rooms tag. This is mostly useless since it's
 not good practice to keep multiple rooms in one file, but hey, better
@@ -93,6 +102,21 @@ safe than sorry.-->
 				@bux_zoneout
 				@! The two of you then had one of the most intense stare-offs in the Universe.
   			</args>
+			
+  		</action>
+		<action command='talk' name='Be High Wizard.'>
+  			<args>
+  				@bux_talk Hey
+				@hi_idle
+				@bux_talk Look, I know that you have no idea who I am, but I really want to go to this party
+				@bux_talk And you're the only chance I have at getting to the place
+				@bux_talk So, can you help me?
+				@hi_talk I...
+				@hi_talk don't... really know.
+				@hi_talk I... shall try...
+				@hi_talk Stay there...
+  			</args>
+			<action class='beHi'/>
   		</action>
   	</character>
 	
@@ -145,10 +169,13 @@ safe than sorry.-->
   				@bux_talk Hey!
 				@hi_talk Oi! U say wot m8
 				@bux_confusedtalk What?
-				@hi_talk I swear on me mum that I'll f8 u
+				@hi_talk I'll f8 u
+				@bux_zoneout
+				@hi_talk il bash ur ead in i sware on me mum
 				@bux_confusedtalk Are you kidding me.
-				@hi_talk I'll rek u
+				@hi_talk I'll rek u, im calling me homboys now
 				@bux_talk Just... nevermind I even talked too you.
+				@hi_talk il rek ur fokn shit i swer 2 christ
   			</args>
   		</action>
   	</character>
@@ -200,6 +227,18 @@ safe than sorry.-->
 				@hi_talk He's just a bit angry that I proved him wrong in an argument.
 				@bux_talk Erm, OK
   			</args>
+  		</action>
+		
+		<action command='talk' name='Ask about the weird DOOR.'>
+  			<args>
+  				@bux_talk Hi, terribly sorry to interrupt..
+				@bux_talk But I can't get to the PARTY because there's a giant lock that I can't unlock
+				@bux_talk Do you think you could open it up for me?
+				@hi_talk Well, I unfortunately do not have that access. But I do know someone who might.
+				@hi_talk He's a fairly shy fellow, but he's quite powerful. Why, he loves competing in Stare-Offs all the time!
+				@hi_talk You should talk to him.
+  			</args>
+			<action class='beHi'/>
   		</action>
   	</character>
   	<!-- here we're adding a standard chest based on a template class found in
@@ -266,6 +305,36 @@ safe than sorry.-->
 				</args>
 			</action>
 		</sprite>
+		
+  	<sprite class='chest1' name='chest7' x='794' y='762'>
+			<action command='openChest' sprite='bux' name='Open.'>
+				<args>
+					chest7, doorKey, @! You got a WIZARD KEY
+					@! You can use this to open random, magical doors.
+				</args>
+				<action command='addAction'>
+                        <args>door,
+                            <action name='Use Wizard Key.' command='removeAction'>
+                                <args>door,Use Wizard Key.</args>
+                                    <action command='setGameState'>
+                                        <args>doorKeyUsed,true</args>
+                                            <action command='playSound' noDelay='true'>
+                                                <args>openSound</args>
+                                            </action>
+                                        </action>
+                                    </action>
+                            </action>
+                        </args>
+                </action>
+			</action>
+		</sprite>
+		
+	<!-- Copying Code from Openbound because I'm a lazy fuck -->
+	<sprite name='door' x='150' y='735' width='100' height='60'>
+                  <animation name='closed' sheet='doorClosed' x='-60' y='-144'/>
+                  <animation name='open' sheet='doorOpen' x='-60' y='-144'/>
+          </sprite>
+          
    <!-- here we're adding in our BG and FG. This is the second half of our 
    optimization. To avoid creating a dozen sprites for every single tile, we
    specify that this image has been sliced up into tiles. Then we just specify
@@ -301,6 +370,19 @@ safe than sorry.-->
 					</action>
             </trigger>
         </trigger>
+		
+		<trigger detonate='true'>
+			<args>gameState,doorKeyUsed=true</args>
+				<action command='startAnimation'>
+					<args>door,open</args>
+						<action command='playSound' noDelay='true'>
+							<args>closeSound</args>                                
+								<action command='addWalkable'>
+									<args>doorWalkable,firstRoom</args>
+								</action>
+						</action>
+				</action>
+		</trigger>
 	</triggers>
   </room>
 </rooms>

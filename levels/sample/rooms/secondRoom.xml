@@ -209,7 +209,7 @@ safe than sorry.-->
 	<triggers>
         <trigger>spriteProperty,char,x&lt;500
             <trigger>spriteProperty,char,y&lt;15
-					<action command='changeRoomRemote'>rooms/thirdRoom.xml,thirdRoom,648,2660</action>
+					<action command='changeRoomRemote'>rooms/thirdRoom.xml,thirdRoom,655,2640</action>
             </trigger>
         </trigger>
 	</triggers>
