@@ -325,12 +325,13 @@ safe than sorry.-->
                                 </action>
                         </args>
                 </action>
-			</action>
-			<action command='openChest' sprite='bux' name='Open.'>
-				<args>
-					@! You can't seem to open this CHEST.
-					@! It has someone's initials on the bottom of the lock, so you assume that they put a spell on it so nobody can open it up.
-				</args>
+			
+				<action command='openChest' sprite='bux' name='Open.'>
+					<args>
+						@! You can't seem to open this CHEST.
+						@! It has someone's initials on the bottom of the lock, so you assume that they put a spell on it so nobody can open it up.
+					</args>
+				</action>
 			</action>
 		</sprite>
 		
