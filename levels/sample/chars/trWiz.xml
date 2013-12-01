@@ -12,7 +12,7 @@ description -->
 	<action class='beTr' name='Be Training Wizard.' command='changeChar'>
 		<args>trWiz</args>
 		<action command='playSong'>
-			<args>karkatSong</args>
+			<args>trSong</args>
 		</action>
 	</action>
 </classes>
@@ -21,7 +21,7 @@ description -->
 
 	<asset name='trSheet' type='graphic'>chars/trWiz/trWiz.png</asset>
 	
-	<asset name='karkatSong' type='audio'>audio/music/demoscene.oga;audio/music/demoscene.mp3</asset> <!-- loops to 0 -->
+	<asset name='trSong' type='audio'>audio/music/hiWiz.oga;audio/music/hiWiz.mp3</asset> <!-- loops to 0 -->
 	
 	<asset name='tr_idle' type='graphic'>dialogs/trWiz/trWiz_Idle.png</asset>
 	<asset name='tr_talk' type='graphic'>dialogs/trWiz/tr_Talk.png</asset>
