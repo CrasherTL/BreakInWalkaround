@@ -6,7 +6,6 @@ is entered for the first time. -->
 
 <dependencies>
 	<dependency>chars/bux.xml</dependency> <!--load in bux first.-->
-	<dependency>chars/meenah.xml</dependency> <!-- loading in everything meenah entails -->
 	<dependency>chars/hiWiz.xml</dependency> <!-- and the HIGH WIZURD -->
 </dependencies>
 
@@ -209,7 +208,7 @@ safe than sorry.-->
 	<triggers>
         <trigger>spriteProperty,char,x&lt;500
             <trigger>spriteProperty,char,y&lt;15
-					<action command='changeRoomRemote'>rooms/thirdRoom.xml,thirdRoom,655,2640</action>
+					<action command='changeRoomRemote'>rooms/thirdRoom.xml,thirdRoom,655,2550</action>
             </trigger>
         </trigger>
 	</triggers>

@@ -6,7 +6,6 @@ is entered for the first time. -->
 
 <dependencies>
 	<dependency>chars/bux.xml</dependency> <!--load in bux first.-->
-	<dependency>chars/meenah.xml</dependency> <!-- loading in everything meenah entails -->
 	<dependency>chars/secguard.xml</dependency> <!-- and karkat -->
 </dependencies>
 

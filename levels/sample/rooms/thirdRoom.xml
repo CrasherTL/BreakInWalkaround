@@ -8,7 +8,6 @@ is entered for the first time. -->
 	<dependency>chars/bux.xml</dependency> <!--load in bux first.-->
 	<dependency>chars/hiWiz.xml</dependency>
 	<dependency>chars/trWiz.xml</dependency>
-	<dependency>chars/door.xml</dependency>
 </dependencies>
 
 <assets>
@@ -32,7 +31,7 @@ is entered for the first time. -->
   <asset name='doorKey' type='graphic'>objects/items/item7.png</asset>
   <asset name='doorClosed' type='graphic'>objects/objects/doorClosed.png</asset>
   <asset name='doorOpen'   type='graphic'>objects/objects/doorOpen.png</asset>
-  <asset name='doorWalkable' type='path'>47,438;252,438;252,735;47,735</asset>
+  <asset name='doorWalkable' type='path'>47,438;252,438;252,735;47,735<!--1,1;21810,1;21810,6500;1,6500--></asset>
 </assets>
 
 <!-- We create the sprite for this item outside of everything else
@@ -121,7 +120,7 @@ safe than sorry.-->
   	</character>
 	
 	<character class='hiWiz' name = 'hiWiz2' x='1639' y='756'>
-  		<action command='talk' name='Talk.'>
+  		<action command='talk' name='Talk.' sprite='bux'>
   			<args>
   				@bux_talk Hello?
 				@hi_talk Ugh, not another one of you today
@@ -136,7 +135,7 @@ safe than sorry.-->
   	</character>
 
 	<character class='hiWiz' name = 'hiWiz3' x='827' y='1334'>
-  		<action command='talk' name='Talk.'>
+  		<action command='talk' name='Talk.' sprite='bux'>
   			<args>
   				@bux_talk Hi, I have a question
 				@hi_talk What is it Child?
@@ -153,7 +152,7 @@ safe than sorry.-->
   	</character>
 	
 	<character class='hiWiz' name = 'hiWiz4' x='1126' y='942' state='walkBack' facing='Back'>
-  		<action command='talk' name='Talk.'>
+  		<action command='talk' name='Talk.' sprite='bux'>
   			<args>
   				@hi_talk
 				@bux_talk What's that? I can't hear you
@@ -164,7 +163,7 @@ safe than sorry.-->
   	</character>
 	
 	<character class='hiWiz' name = 'hiWiz5' x='300' y='763'>
-  		<action command='talk' name='Talk.'>
+  		<action command='talk' name='Talk.' sprite='bux'>
   			<args>
   				@bux_talk Hey!
 				@hi_talk Oi! U say wot m8
@@ -181,7 +180,7 @@ safe than sorry.-->
   	</character>
 	
 	<character class='trWiz' x='264' y='763'>
-  		<action command='talk' name='Talk.'>
+  		<action command='talk' name='Talk.' sprite='bux'>
   			<args>
   				@tr_talk Hahaha, dude.
 				@tr_talk I know you're only a regular WIZARD, but don't you know him?
@@ -210,7 +209,7 @@ safe than sorry.-->
   	</character>
 	
 	<character class='hiWiz' name = 'hiWiz7' x='767' y='944' state='walkBack' facing='Back'>
-  		<action command='talk' name='Talk.'>
+  		<action command='talk' name='Talk.' sprite='bux'>
   			<args>
   				@hi_talk Go away, please!
 				@hi_talk Can't you see I'm trying too make conversation?
@@ -218,10 +217,19 @@ safe than sorry.-->
 				@bux_zoneout
   			</args>
   		</action>
+		
+  		<action command='talk' name='Become Social.' sprite='hiWiz'>
+  			<args>
+  				@! Your fellow HIGH WIZARD grumbles as you come near him.
+				@! It seems he doesn't want to be social.
+				@! You're just going to not talk to anyone from now on.
+  			</args>
+  		</action>
   	</character>
+	
   	
 	<character class='hiWiz' name = 'hiWiz8' x='767' y='914'>
-  		<action command='talk' name='Talk.'>
+  		<action command='talk' name='Talk.' sprite='bux'>
   			<args>
   				@hi_talk Oh, don't mind him
 				@hi_talk He's just a bit angry that I proved him wrong in an argument.
@@ -229,7 +237,7 @@ safe than sorry.-->
   			</args>
   		</action>
 		
-		<action command='talk' name='Ask about the weird DOOR.'>
+		<action command='talk' name='Ask about the weird DOOR.' sprite='bux'>
   			<args>
   				@bux_talk Hi, terribly sorry to interrupt..
 				@bux_talk But I can't get to the PARTY because there's a giant lock that I can't unlock
@@ -238,7 +246,14 @@ safe than sorry.-->
 				@hi_talk He's a fairly shy fellow, but he's quite powerful. Why, he loves competing in Stare-Offs all the time!
 				@hi_talk You should talk to him.
   			</args>
-			<action class='beHi'/>
+  		</action>
+
+		<action command='talk' name='Talk.' sprite='hiWiz'>
+  			<args>
+  				@hi_talk Hello! I didn't think I would see you today
+				@hi_talk Did you meet that person?
+				@! Oh god you're not even ready for this.
+  			</args>
   		</action>
   	</character>
   	<!-- here we're adding a standard chest based on a template class found in
@@ -316,13 +331,16 @@ safe than sorry.-->
                         <args>door,
                             <action name='Use Wizard Key.' command='removeAction'>
                                 <args>door,Use Wizard Key.</args>
-                                    <action command='setGameState'>
-                                        <args>doorKeyUsed,true</args>
-                                            <action command='playSound' noDelay='true'>
-                                                <args>openSound</args>
-                                            </action>
-                                    </action>
-                                </action>
+									<action command='startAnimation'>
+										<args>door,open</args>-->
+											<action command='playSound' noDelay='true'>
+												<args>openSound</args> 
+													<action command='addWalkable'>
+														<args>doorWalkable,thirdRoom</args>
+													</action>
+											</action>
+									</action>
+							</action>
                         </args>
                 </action>
 			
@@ -377,22 +395,22 @@ safe than sorry.-->
             </trigger>
         </trigger>
 		
-		<trigger detonate='true'>
+		<!--<trigger detonate='true'>
 			<args>gameState,doorKeyUsed=true</args>
 				<action command='startAnimation'>
 					<args>door,open</args>
 						<action command='playSound' noDelay='true'>
 							<args>closeSound</args>                                
-								<action command='addWalkable'>
+								<action command='addUnwalkable'>
 									<args>doorWalkable,thirdRoom</args>
 								</action>
 						</action>
 				</action>
-		</trigger>
+		</trigger>-->
 		
-		<trigger>spriteProperty,char,x&lt;500
-            <trigger>spriteProperty,char,y&lt;15
-					<action command='changeRoomRemote'>rooms/secondRoom.xml,secondRoom,655,2640</action>
+		<trigger>spriteProperty,bux,x&lt;704
+            <trigger>spriteProperty,bux,y&gt;2650
+					<action command='changeRoomRemote'>rooms/secondRoom.xml,secondRoom,415,25</action>
             </trigger>
         </trigger>
 	</triggers>

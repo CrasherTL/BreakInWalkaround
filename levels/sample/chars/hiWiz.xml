@@ -12,7 +12,7 @@ description -->
 	<action class='beHi' name='Be High Wizard.' command='changeChar'>
 		<args>hiWiz</args>
 		<action command='playSong'>
-			<args>karkatSong</args>
+			<args>wizSong</args>
 		</action>
 	</action>
 </classes>
@@ -21,7 +21,7 @@ description -->
 
 	<asset name='hiSheet' type='graphic'>chars/hiWiz/hiWiz.png</asset>
 	
-	<asset name='karkatSong' type='audio'>audio/music/demoscene.oga;audio/music/demoscene.mp3</asset> <!-- loops to 0 -->
+	<asset name='wizSong' type='audio'>audio/music/hiWiz.oga;audio/music/HiWiz.mp3</asset> <!-- loops to 0 -->
 	
 	<asset name='hi_idle' type='graphic'>dialogs/hiWiz/hi_Idle.png</asset>
 	<asset name='hi_talk' type='graphic'>dialogs/hiWiz/hi_Talk.png</asset>

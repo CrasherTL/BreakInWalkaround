@@ -14,7 +14,7 @@
   </asset>
   
   <!-- An asset named preloaderBG will be rendered on the loading screen-->
-  <asset name='preloaderBG' type='graphic'>interface/load.png</asset>
+  <asset name='preloaderBG' type='graphic'>interface/load.gif</asset>
   
 	<asset name='volumeControl' type='graphic'>interface/volumeControl.png</asset>
 	<asset name='saveControl' type='graphic'>interface/save_icon.png</asset>
