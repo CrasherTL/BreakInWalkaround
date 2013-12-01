@@ -99,7 +99,7 @@ Sburb.AssetManager.prototype.draw = function(){
     Sburb.stage.fillRect(-3,-3,Sburb.Stage.width+6,Sburb.Stage.height+6);
     if(this.loaded["preloaderBG"]){
         var preloaderBG = Sburb.assets["preloaderBG"];
-        	Sburb.stage.drawImage(preloaderBG,650*(Math.floor(0.000005*new Date().getTime()) % 5),0,preloaderBG.width,preloaderBG.height,0,0,preloaderBG.width,preloaderBG.height);
+        	Sburb.stage.drawImage(preloaderBG,650*(Math.floor(0.001*new Date().getTime()) % 5),0,preloaderBG.width,preloaderBG.height,0,0,preloaderBG.width,preloaderBG.height);
     }
     Sburb.stage.fillStyle = "rgb(255,255,255)"
     Sburb.stage.font="10px Verdana";
