@@ -23,8 +23,8 @@ description -->
 	
 	<asset name='trSong' type='audio'>audio/music/hiWiz.oga;audio/music/hiWiz.mp3</asset> <!-- loops to 0 -->
 	
-	<asset name='tr_idle' type='graphic'>dialogs/trWiz/trWiz_Idle.png</asset>
-	<asset name='tr_talk' type='graphic'>dialogs/trWiz/tr_Talk.png</asset>
+	<asset name='tr_idle' type='graphic'>dialogs/trWiz/trWiz_idle.png</asset>
+	<asset name='tr_talk' type='graphic'>dialogs/trWiz/tr_talk.png</asset>
 </assets>
 
 <hud>
