@@ -343,13 +343,12 @@ safe than sorry.-->
 							</action>
                         </args>
                 </action>
-			
-				<action command='openChest' sprite='bux' name='Open.'>
-					<args>
-						@! You can't seem to open this CHEST.
-						@! It has someone's initials on the bottom of the lock, so you assume that they put a spell on it so nobody can open it up.
-					</args>
-				</action>
+			</action>
+			<action command='talk' sprite='bux' name='Open.'>
+				<args>
+					@! You can't seem to open this CHEST.
+					@! It has the initials 'HW' on the bottom of the lock, so you assume that one of the High Wizards put a spell on the lock
+				</args>
 			</action>
 		</sprite>
 		
