@@ -36,7 +36,7 @@
   	<spritebutton name='helpButton' x='591' y='9' width='54' height='63' sheet='helpControl'>
   		<action command='talk' soft='true'>
   			<args>@! Use the arrow keys or WASD to move, and space to interact.</args>
-			<args>@! Art and Programming was done by Crasher with help from MrCheeze and tinaun, Bux's Theme was done by John Powell, High Wizard's Theme was done by Xyerohour</args>
+			<args>@! Bux: Explore was made by the following people: Art and Programming was done by Crasher with help from MrCheeze and tinaun, Bux's Theme was done by John Powell, and High Wizard's Theme was done by Xyerohour. Credit to benzrf for hosting.</args>
 			<args>@! SBURB engine is by MSPA.</args>
   		</action>
   	</spritebutton>
