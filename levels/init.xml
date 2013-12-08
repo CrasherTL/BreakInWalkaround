@@ -25,7 +25,7 @@ should be relative to.-->
 
 <sburb name="Sburb-Sample" version="1.0" description="initialization"
 	char='bux' bgm='buxSong' scale='2' 
-	levelPath='levels/sample' resourcePath='resources/sample'>
+	levelPath='walkarounds/bux_explore/levels/sample' resourcePath='walkarounds/bux_explore/resources/sample'>
 
 	<!-- We generally don't have any actual content in here. We just load in
 	dependencies. Usually core specifications found in "etc" and then the starting
